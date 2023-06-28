@@ -22,6 +22,8 @@ is_an_anagram(_,[]) ->
 anagrams(X,Y) ->
     string:equal(lists:subtract(X,Y) , []) and string:equal(lists:subtract(Y,X) , []). 
 
+
+    
 %is_proper(X) ->
   %  1) trovare i divisori di un numero
     %2) metterli in una Lista
