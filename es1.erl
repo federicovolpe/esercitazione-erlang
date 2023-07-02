@@ -19,6 +19,7 @@ is_an_anagram(X,[H|T] ) ->
 end;
 is_an_anagram(_,[]) ->
     false.
+
 anagrams(X,Y) ->
     string:equal(lists:subtract(X,Y) , []) and string:equal(lists:subtract(Y,X) , []). 
 
