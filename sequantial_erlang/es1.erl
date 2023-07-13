@@ -5,22 +5,22 @@ main() ->
     is_palindrome("Do geese see god?"),
     Lista = ["ciao","baby","come","stai","gatto","topo", "cane"],
     is_an_anagram("ybab",Lista).
-%    is_proper(2).
-
-is_palindrome(X) ->
+%    is_proper(2).        
+                          
+is_palindrome(X) ->       
     Y = string:lowercase(lists:filter(fun(Y) -> not lists:member( Y, [$.,$,,$;,$?,$!,32])end, X)),
     string:equal(Y ,lists:reverse(Y)).
-
+                          
 is_an_anagram(X,[H|T] ) ->
-    Y = anagrams(X,H),
-    if 
-    Y -> true;
+    Y = anagrams(X,H),    
+    if                    
+    Y -> true;            
     true -> is_an_anagram(X,T)
-end;
-is_an_anagram(_,[]) ->
-    false.
-
-anagrams(X,Y) ->
+end;                      
+is_an_anagram(_,[]) ->    
+    false.                
+                          
+anagrams(X,Y) ->          
     string:equal(lists:subtract(X,Y) , []) and string:equal(lists:subtract(Y,X) , []). 
 
 

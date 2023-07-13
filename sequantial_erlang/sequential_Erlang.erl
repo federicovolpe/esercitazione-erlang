@@ -45,21 +45,21 @@ anagrams(S1, S2) ->
 %funzione che calcola tutti i fattori primi di un numero x
 %funzione che genera una lista di numeri interi in que3sto caso a partire da 2
 lista(X) -> [X| fun() -> lista(X+1) end].
-
+        
 %funzione di filtro che serve a filtrare quali elementi di una lista verificano una proprietà
-
+        
 % nel caso di una lista vuota allora ritorno la lista vuota
 filtro(_,[]) -> [];
 filtro(Proprieta, [H|T]) ->
     case Proprieta(H) of
         % ritorno una lista con in testa l'elemento H
         true -> [H|fun() -> filtro(Proprieta, T) end];
-
+        
         % ritorno una lista creata con T 
         false -> [fun() -> filtro(Proprieta, T) end]
     end.
-
-
+        
+        
 % funzione che restituisce tutti i fattori di un numero
 fattori(N) -> fattori(N, [], primi()).
 fattori(N, R, _) when N =< 1 -> lists:reverse(R);
@@ -78,16 +78,16 @@ listaPrimi([H|T]) -> [H| fun() -> listaPrimi(filtraDivisibili(H, T)) end].
 
 % funzione che crea la lista di primi a partire dal 2
 primi() -> listaPrimi(lista(2)).
-
+                        
 % funzione che determina se un nuemro X è primo o meno
 primo(N) -> primo(N, primi()).
-
-primo(_, []) -> false;
+                        
+primo(_, []) -> false;  
 primo(N, [N|_]) -> true;
 primo(N, [_|T]) -> primo(N, T).
-
+                        
 % funzione che ritorna i primi n numeri primi
 iPrimi(N) -> iPrimi(N,primi()).
-
+                        
 iPrimi(N, [X| P]) -> [X| iPrimi(N - 1, P())];
-iPrimi(0, _) -> [].
+iPrimi(0, _) -> [].     

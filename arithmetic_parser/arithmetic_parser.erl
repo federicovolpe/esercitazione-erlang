@@ -39,26 +39,26 @@ parse_expression([H | T], Stack) ->
             NumberString = parse_number([H | T], []), % ricavo del numero completo
             Number = list_to_integer(NumberString), % trasformazione del numero da stringa a integer
             parse_expression(T, [{num, Number} | Stack]); % aggiunta all'espressione del numero trovato
-        false ->
+        false ->          
             parse_expression(T, Stack) % se non è un numero allora continuo il parsing senza fare niente
-    end.
-
-
-
+    end.                  
+                          
+                          
+                          
 % in qualsiasi altro caso ritorno un messaggio di errore
 %parse_expression(_, _) ->
     %{error, "Invalid expression"}.
-
-% parsing di un numero 
+                          
+% parsing di un numero    
 parse_number([H | T], Acc) ->
-    case is_digit(H) of
+    case is_digit(H) of   
         true -> parse_number(T, [H | Acc]);
         false -> lists:reverse(Acc)
-    end;
-
-parse_number(_, Acc) ->
-    lists:reverse(Acc).
-
+    end;                  
+                          
+parse_number(_, Acc) ->   
+    lists:reverse(Acc).   
+                         
 parse_operator($+) -> plus;
 parse_operator($-) -> minus;
 parse_operator($*) -> multiply;

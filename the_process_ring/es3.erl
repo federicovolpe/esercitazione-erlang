@@ -2,7 +2,7 @@
 - export ([start/2]).
 % 1 spawnare N processi
 % 2 inviare un messaggio e farlo passare fra i tre 
-
+             
 %funzione master che gestisce tutto
 start(N,Messaggio) ->
     io:format("inizio~n"),
