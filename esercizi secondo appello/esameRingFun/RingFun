@@ -1,0 +1,35 @@
+-module(RingFun).
+-export([start/0]).
+
+% Arr -> array of int
+% Np -> number of processes
+% Ng -> number of round
+start(Arr, Np, Ng) ->
+    register(First, spawn(?MODULE, create, [self(), Np, self()])).
+    loop().
+
+create(Father, 1) -> %create the last proces 
+    spawn(?MODULE, loopLast, [First]);
+
+create(Father, Np) -> % function that creates the other processes
+    create(spawn(?MODULE, loop, [Father]), Np -1).
+
+loop(Next, Function) -> %receive a message an passes to the next processes
+    receive ->
+        {Input, Ng} ->
+            ;
+        stop ->
+
+    end,
+    loop(Next, Function).
+
+loopLast(Next, Function) -> % also counts the number of turns
+    receive ->
+        {Input, 0} -> % if the last round is over apply the function and return the input
+            ;  
+        {Input, Ng} ->
+            ; 
+        stop ->
+    end,
+    loop(Next, Function).
+

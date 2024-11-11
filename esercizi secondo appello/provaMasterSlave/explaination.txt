@@ -1,0 +1,5 @@
+questo esercizio prevede la programmazione di due server
+uno client o master : che invierà una richiesta di conversione di una stringa
+    in uppercase o in lowercase
+un processo slave : ricevuta una tupla esegue la funzione richiesta e restituisce
+    il risultato
